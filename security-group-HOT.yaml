@@ -1,0 +1,30 @@
+#To create below stack follow these steps:
+# 1) source <openstack credentials> 
+# 2) openstack stack create -t security-group-HOT.yaml <stack name to create> 
+# 3) #To list stack: openstack stack list
+# 4) #To list resources in stack: openstack resource list <stack name>
+
+heat_template_version: 2015-04-30
+
+resources:
+
+  MySecurityGroup:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      description: "A SecurityGroup with default rules " 
+      name: "MySecurityGroup"
+      #Write rules here or create another resource
+      # rules: [{"direction": "ingress", "ethertype": "IPv4", "port_range_min": 22, "port_range_max": 22, "protocol": "tcp"}]      
+
+  # Create seperate resource for security group rule and attach it to above created security group
+  ssh-rule:
+    type: OS::Neutron::SecurityGroupRule
+    properties:
+      description: "A security group rule to allow ssh from anywhere"
+      direction: "egress"
+      ethertype: "IPv4"
+      port_range_max: 22
+      port_range_min: 22
+      protocol: "tcp"
+      remote_ip_prefix: "0.0.0.0/0"
+      security_group: { get_resource: MySecurityGroup } 
