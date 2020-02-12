@@ -1,8 +1,6 @@
-export OS_USERNAME=admin
-export OS_REGION_NAME=Riyadh
-export OS_USER_DOMAIN_NAME=Default
-export OS_AUTH_URL=https://cloud.ivolve.io:13000
-export OS_PASSWORD=8MoZUii3lFHoJTx6qaonNE1QO
-export OS_PROJECT_DOMAIN_NAME=Default
-export OS_PROJECT_NAME=admin
+export OS_USERNAME=<YOUR USERNAME>
+export OS_REGION_NAME=<YOUR REGION NAME>
+export OS_AUTH_URL=<YOUR OPENSTACK AUTH URL>
+export OS_PASSWORD=<YOUR PASSWORD>
+export OS_PROJECT_NAME=<YOUR PROJECT NAME>
 export OS_AUTH_TYPE=password
